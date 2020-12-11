@@ -1,0 +1,30 @@
+<html><head><title>MAIN</title></head>
+
+<body>
+<?php
+$id=$_POST['id'];
+$name=$_POST['name'];
+$building = $_POST['building'];
+echo "
+
+<Table bgcolor='lightgreen' align='center' width='600' height='100'>
+<tr><td><div align='center'><Font size='6'>".$building." - Select Time</Font></div></td></tr></Table></div><br>
+
+<br><br>
+<form method=POST action='check.php'>";
+
+echo "<input type='hidden' value=$id name='id'><input type='hidden' value=$name name='name'><input type='hidden' value=$building name='building'>";
+?>
+
+<table align="center">
+<tr><td>Start</td><td></td><td></td><td></td><td></td><td><input type="text" name="start" maxlength="10"></td></tr>
+<tr><td>End  </td><td></td><td></td><td></td><td></td><td><input type="text" name="end" maxlength="10"></td></tr>
+</table>
+<p>
+<div align="center">You have to type like 05231600 --> 5/23 16:00</div>
+<div align="center">(You can reserve 3 hours maximum)<br><br></div>
+<div align="center"><input type="submit" value="submit"></form>
+<form method=POST action="reserve.htm">
+<?php echo "<input type='hidden' value=$id name='id'><input type='hidden' value=$name name='name'>"; ?>
+<br><input type=submit value="HOME"></form></div>
+</body></html>
