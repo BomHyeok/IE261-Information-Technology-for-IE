@@ -1,0 +1,50 @@
+<html><head><title>Select Building</title></head>
+
+<body>
+
+<?php
+$id=$_POST['id'];
+$name=$_POST['name'];
+$con = mysqli_connect("localhost","root","","project");
+$result1 = mysqli_query($con, "SELECT Student_Code FROM REGISTERED_STUDENT WHERE ID='$id'");
+while($row = mysqli_fetch_array($result1)){
+    $student_code = $row['Student_Code'];
+  }
+$result2 = mysqli_query($con, "SELECT * FROM RESERVATION_HISTORY WHERE RESERVATION_HISTORY.Student_Code=$student_code AND Blackhistory=1");
+$cnt = mysqli_num_rows($result2);
+if($cnt>=2){
+echo "
+
+<Table bgcolor='lightgreen' align='center' width='600' height='100'>
+<tr><td><div align='center'><Font size='6'>You can't reserve (BlackList)</Font></div></td></tr></Table></div><br>";
+
+echo "<p><form method=POST action='reserve.htm'>
+<input type='hidden' value=$id name='id'><input type='hidden' value=$name name='name'>
+<div align='center'><input type='submit' value='HOME'></div>";
+
+}
+else{
+echo "
+<form method=POST action='welcomeregistertime.htm'>
+<input type='hidden' value=$id name='id'><input type='hidden' value=$name name='name'>
+
+<Table bgcolor='lightgreen' align='center' width='600' height='100'>
+<tr><td><div align='center'><Font size='6'>Select the building</Font></div></td></tr></Table></div><br>
+
+<table border align='center'>
+<tr><td><img src='https://www.kaist.ac.kr/Upl/_board/photo_kr/photo_kr_0_1406194997.jpg' width='320' height='200' border='0'></td>
+<td><img src='http://mblogthumb1.phinf.naver.net/20141226_160/kaistar2145_1419598542725Sl0g9_JPEG/IMG_7104.JPG?type=w2' width='320' height='200' border='0'></td></tr>
+<tr align='center'><td><input type='submit' value='N10' name='building'></td>
+<td><input type='submit' value='N13-1' name='building'></td></tr>
+</table>
+
+</form>
+<div align='center'><form method=POST action='reserve.htm'>
+
+<input type='hidden' value=$id name='id'><input type='hidden' value=$name name='name'>";
+
+
+echo "<br><input type=submit value='HOME'></form></div>";}
+
+?>
+</body></html>
