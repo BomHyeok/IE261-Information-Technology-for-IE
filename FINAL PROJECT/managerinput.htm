@@ -1,0 +1,25 @@
+<html><head><title>Who is Personalizing?</title></head>
+
+<body>
+<Table bgcolor='lightgreen' align='center' width='600' height='100'><tr><td><div align='center'><Font size='6'>Who is Personalizing?</Font></div></td></tr></Table></div>
+<?php
+$mid=$_POST['mid'];
+$mpw=$_POST['mpassword'];
+echo "
+
+
+<br><br>
+<table align='center'>
+<form method=POST action='blackhistory.php'>
+<tr><td>Building</td><td></td><td></td><td></td><td></td><td><input type='text' name='pbuilding' maxlength='10'></td></tr>
+<tr><td>Seat Number</td><td></td><td></td><td></td><td></td><td><input type='text' name='pseat' maxlength='10'></td></tr>
+</table>
+<br>";
+echo "<input type='hidden' value=$mid name='mid'><input type='hidden' value=$mpw name='mpassword'>";?>
+<div align="center">You have to type like 05231600 --> 5/23 16:00</div>
+<div align="center"><input type="submit" value="submit"></div></form>
+<?php
+echo "<div align='center'><form method=POST action='managerlogin.php'>
+<input type='hidden' value=$mid name='mid'><input type='hidden' value=$mpw name='mpassword'><input type='submit' value='Home'></form></div>";?>
+
+</body></html>
